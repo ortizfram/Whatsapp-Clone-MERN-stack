@@ -2,8 +2,8 @@
 
 // import
 import express from 'express';
-import mongoose from 'mongoose';
-
+// import mongoose from 'mongoose';
+//----------------------------------------
 
 // app config
 //      app instance
@@ -12,20 +12,20 @@ import mongoose from 'mongoose';
 const app = express();
 // specify port 
 const port = process.env.PORT || 9000;
-/*
+//----------------------------------------
 
 // middleware
 
 
 // DB config
-const connection_url = "mongodb+srv://ortizfram:d9SvILNfw2z4rqBb@cluster0.t2ttprp.mongodb.net/?retryWrites=true&w=majority";
+// const connection_url = "mongodb+srv://ortizfram:d9SvILNfw2z4rqBb@cluster0.t2ttprp.mongodb.net/?retryWrites=true&w=majority";
 
-mongoose.connect(connection_url, {
-    useCreateIndex: true,
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
-*/
+// mongoose.connect(connection_url, {
+//     useCreateIndex: true,
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// });
+//----------------------------------------
 
 // ???
 
@@ -34,7 +34,7 @@ mongoose.connect(connection_url, {
 //      call the api and nothing at the end
 //      in server world 200 means OK, 201 means createed
 app.get("/", (req, res) => res.status(200).send("hello world"));
-
+//----------------------------------------
 
 // listen
 app.listen(port, () => console.log(`Listening on localhost:${port}`));
