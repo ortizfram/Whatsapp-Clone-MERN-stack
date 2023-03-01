@@ -2,7 +2,7 @@
 
 // import
 import express from 'express';
-// import mongoose from 'mongoose';
+import mongoose from 'mongoose';
 //----------------------------------------
 
 // app config
@@ -18,13 +18,14 @@ const port = process.env.PORT || 9000;
 
 
 // DB config
-// const connection_url = "mongodb+srv://ortizfram:d9SvILNfw2z4rqBb@cluster0.t2ttprp.mongodb.net/?retryWrites=true&w=majority";
+const connection_url = "mongodb+srv://ortizfram:rSH3rvQn7yWOJqMP@cluster0.t2ttprp.mongodb.net/whatsappdb?retryWrites=true&w=majority";
 
-// mongoose.connect(connection_url, {
-//     useCreateIndex: true,
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
-// });
+mongoose.connect(connection_url, {
+    // help mongoose connect to DB smoothly
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 //----------------------------------------
 
 // ???
