@@ -2,20 +2,30 @@
 
 // import
 import express from 'express';
+import mongoose from 'mongoose';
 
 
 // app config
 //      app instance
 //      port that the app is gonna run
+//      check with postman
 const app = express();
+// specify port 
 const port = process.env.PORT || 9000;
-
+/*
 
 // middleware
 
 
 // DB config
+const connection_url = "mongodb+srv://ortizfram:d9SvILNfw2z4rqBb@cluster0.t2ttprp.mongodb.net/?retryWrites=true&w=majority";
 
+mongoose.connect(connection_url, {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+*/
 
 // ???
 
