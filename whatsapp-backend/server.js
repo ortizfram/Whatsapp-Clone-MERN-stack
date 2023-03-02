@@ -15,14 +15,13 @@ const port = process.env.PORT || 9000;
 //----------------------------------------
 
 // middleware
-
+app.use(express.json());
 
 // DB config
 const connection_url = "mongodb+srv://ortizfram:rSH3rvQn7yWOJqMP@cluster0.t2ttprp.mongodb.net/whatsappdb?retryWrites=true&w=majority";
 
 mongoose.connect(connection_url, {
     // help mongoose connect to DB smoothly
-    useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
