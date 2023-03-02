@@ -41,6 +41,32 @@ mongoose.connect(connection_url, {
 
 // ???
 
+//     change stream
+const db = mongoose.connection
+
+db.once('open', ()=>{
+    console.log("DB is connected");
+
+    const msgCollection = db.collection("messagecontents");
+    const changeStream = msgCollection.watch();
+
+    changeStream.on('change', (change)=>{
+        console.log("A change has occured", change);
+    
+
+        if (change.operationType === 'insert') {
+            const messageDetails = change.fullDocument;
+            pusher.trigger('messages', 'inserted',
+                {
+                    name: messageDetails.user,
+                    message: messageDetails.message
+                }
+            );
+        } else {
+            console.log('Error triggering Pusher');
+        }
+    });    
+});
 
 // api routes
 //      call the api and nothing at the end

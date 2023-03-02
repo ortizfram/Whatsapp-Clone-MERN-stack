@@ -9,5 +9,5 @@ const whatsappSchema=mongoose.Schema({
     received : String
 });
 
-// give name to collection
-export default mongoose.model('messageContent', whatsappSchema);
+// collection
+export default mongoose.model('messagecontents', whatsappSchema);
