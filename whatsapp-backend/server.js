@@ -3,6 +3,7 @@
 // import
 import express from 'express';
 import mongoose from 'mongoose';
+import Messages from "./dbMessages.js";
 //----------------------------------------
 
 // app config
@@ -17,8 +18,8 @@ const port = process.env.PORT || 9000;
 // middleware
 app.use(express.json());
 
-// DB config
-const connection_url = "mongodb+srv://ortizfram:rSH3rvQn7yWOJqMP@cluster0.t2ttprp.mongodb.net/whatsappdb?retryWrites=true&w=majority";
+// DB config   
+const connection_url = "mongodb+srv://ortizfram:o8LImqzHsGGsIB1N@cluster0.t2ttprp.mongodb.net/whatsappdb?retryWrites=true&w=majority";
 
 mongoose.connect(connection_url, {
     // help mongoose connect to DB smoothly
@@ -34,6 +35,20 @@ mongoose.connect(connection_url, {
 //      call the api and nothing at the end
 //      in server world 200 means OK, 201 means createed
 app.get("/", (req, res) => res.status(200).send("hello world"));
+
+app.post('/messages/new', (req, res) => {
+    const dbMessage = req.body;
+
+    // use Promise instead of callback cause if not it throws error
+    //    sucess .then(), error .catch()
+    Messages.create(dbMessage)
+        .then(data => {  // .then() == if
+            res.status(201).send(`new message created: \n ${data}`);
+        })
+        .catch(err => {  // .catch() == else
+            res.status(500).send(err);
+        });
+});
 //----------------------------------------
 
 // listen
