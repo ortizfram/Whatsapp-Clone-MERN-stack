@@ -4,6 +4,9 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import Messages from "./dbMessages.js";
+// const Pusher = require('pusher');
+import Pusher from 'pusher';
+
 //----------------------------------------
 
 // app config
@@ -13,6 +16,14 @@ import Messages from "./dbMessages.js";
 const app = express();
 // specify port 
 const port = process.env.PORT || 9000;
+
+const pusher = new Pusher({
+    appId: "1562117",
+    key: "710a62de81cc0e56ae9c",
+    secret: "4e67712cd5a0c54c65f4",
+    cluster: "us2",
+    useTLS: true
+  });
 //----------------------------------------
 
 // middleware
