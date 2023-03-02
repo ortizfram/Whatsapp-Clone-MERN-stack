@@ -36,6 +36,16 @@ mongoose.connect(connection_url, {
 //      in server world 200 means OK, 201 means createed
 app.get("/", (req, res) => res.status(200).send("hello world"));
 
+app.get("/messages/sync", (req, res) => {
+    Messages.find()
+        .then((data) => {
+            res.status(200).send(data);
+        })
+        .catch((err) => {
+            res.status(500).send(err);
+        });
+});
+
 app.post('/messages/new', (req, res) => {
     const dbMessage = req.body;
 
